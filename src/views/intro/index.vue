@@ -1,9 +1,50 @@
 <script>
+import {ref} from 'vue'
 import Sociais from '@/components/icons/sociais/index.vue'
 
 export default {
   components: {
     Sociais,
+  },
+  setup(){
+    const showTitle = ref(true)
+
+
+
+    const beforeEnter = () => {
+        // console.log('before Enter')
+    }
+    const enter = () => {
+        // console.log('Enter')
+        
+    }
+    const afterEnter = () => {
+        // console.log('after Enter')
+        setTimeout(() => showTitle.value = true, 2000)
+    }
+
+    const beforeLeave = () => {
+        // console.log('before Leave')
+    }
+    const leave = () => {
+        // console.log('Leave')
+        
+    }
+    const afterLeave = () => {
+        // console.log('after Leave')
+        setTimeout(() => showTitle.value = false, 2000)
+    }
+
+
+    return {
+        showTitle, 
+        beforeEnter, 
+        enter, 
+        afterEnter,
+        beforeLeave,
+        leave,
+        afterLeave,
+    }  
   },
 };
 </script>
@@ -13,8 +54,21 @@ export default {
             <h1>
                 Eduardo Prates
                 <Sociais />
-                </h1>                
-            <h2>Desenvolvedor <strong>Full Stack</strong></h2>
+            </h1>                
+            <h2>Desenvolvedor 
+                <transition appear name="fade"
+                    @before-enter="beforeEnter"
+                    @enter="enter"
+                    @after-enter="afterEnter"
+
+                    @before-leave="beforeLeave"
+                    @leave="leave"
+                    @after-Leave="afterLeave"
+
+                >
+                    <strong v-if="showTitle">Full Stack</strong>                    
+                </transition>
+            </h2>
         </div>
     </div>
 </template>
@@ -66,8 +120,18 @@ strong{
     font-size: 100px;
     width: 40vw;
 }
-
-
+.fade-enter-from{
+    opacity: 0;
+}
+.fade-enter-active{
+    transition: opacity 2s ease;
+}
+.fade-leave-to{
+    opacity: 0;
+}
+.fade-leave-active{
+    transition: opacity 2s ease;
+}
 
 @media only screen and (max-width: 1651px) {
     .intro{

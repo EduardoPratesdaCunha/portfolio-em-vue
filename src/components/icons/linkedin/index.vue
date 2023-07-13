@@ -1,8 +1,3 @@
-<script>
-
-
-</script>
-
 <template>
     <div>
         <a href="https://www.linkedin.com/in/eduardo-prates-da-cunha/">

@@ -5,7 +5,7 @@ import LinkedinIcon from '../linkedin/index.vue'
 export default {
   components: {
     GithubIcon,
-    LinkedinIcon
+    LinkedinIcon,
   }
 }
 </script>
@@ -16,7 +16,6 @@ export default {
       <linkedinIcon />
     </div>
 </template>
-  
 
 <style>
     .contats {
